@@ -18,6 +18,10 @@ footer {
     padding-right: 1rem;
 }
 
+.fas {
+    color: var(--secondary-color);
+}
+
 h1,h2,h3,h4,h5,h6 {
     color: var(--primary-color);
 }
@@ -53,6 +57,19 @@ pre[class*="language-"] {
 white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
+}
+
+.Drip {
+    color: yellowgreen;
+}
+
+.Drop {
+    color: powderblue;
+}
+
+.DripDrop {
+    color:red;
+    font-weight: bold;
 }
 
 main>.container {

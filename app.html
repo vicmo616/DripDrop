@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Vic Manuel Ortiz</title>
+    <title>DRIP DROP: A Coding Project By Vic Manuel Ortiz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,13 +14,16 @@
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/site.css">
+    <link rel="icon" href="img/favicon.ico">
+
 </head>
 
 <body class="d-flex flex-column h-100">
     <!-- nav section -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="img/Vic manuel (gray).png" width="36" height="36"
+                    class="d-inline-block align-text-top"> DRIP DROP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -37,49 +40,103 @@
                         <a class="nav-link" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/vicmo616/DripDrop">Git Repo</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
     <!-- main section -->
     <main class="flex-shrink-0">
-        <div class="container">
-
-        </div>
-    </main>
-    <!-- footer section -->
-    <footer class="footer mt-auto py-3">
-        <div class="container-fluid ">
-            <div class="row row-cols-1 row-cols-lg-3 gy-2">
-                <div class="col  order-last order-lg-first text-light">
-                    <div><span class="text-muted">&copy;2021</span> Vic Manuel Ortiz | vicmo616@gmail.com</div>
+        <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col border-end border-2">
+                    <h1>DRIP DROP: A Coding Project</h1>
+                    <h4 class="lead">
+                        When it counts, you DRIP DROP. A Javascript coding exercise using loops.
+                        Write a program that prints the numbers from 1 to 100 and for multiples of '3' display "Drip"
+                        instead of the number and for multiples of '5' display "Drop".
+                        If a multiple of both display "DripDrop".
+                    </h4>
+                    <h2 class="mt-5 border-bottom border-2">Instructions</h2>
+                    <p>Enter a Drip and a Drop value. Press the button and the values will appear.</p>
                 </div>
-                <div class="col align-items-center justify-content-start justify-content-lg-center">
-                    <!-- <img src="" alt="Vic Manuel Ortiz Logo" height="24"> -->
-                </div>
-                <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
-                    <div class="row">
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-twitter fa-2x"></i></a>
-                        </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
-                        </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
+                <div class="col">
+                    <div>
+                        <h5>Enter Values</h5>
+                        <form class="row gy-2 gx-2">
+                            <div class="col">
+                                <input type="number" class="form-control" value="3" id="dripValue"
+                                    placeholder="Enter Drip value" aria-label="Drip Value">
+                            </div>
+                            <div class="col">
+                                <input type="number" id="dropValue" class="form-control" value="5"
+                                    placeholder="Enter Drop Value" aria-label="Drop Value">
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-lg btn-dark" id="btnSubmit" type="button">Drop It</button>
+                            </div>
+                        </form>
+                        <h2 class="mt-5 border-bottom border-2">Results</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <tbody id="results">
+                                    <!-- Results go here -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </main>
+    <!-- footer section -->
+    <footer class="footer mt-auto py-3 bg-secondary">
+        <div class="container-fluid ">
+            <div class="row row-cols-1 row-cols-lg-3 gy-2">
+                <div class="col  order-last order-lg-first text-light">
+                    <div> &copy;2021 Vic Manuel Ortiz | vicmo616@gmail.com</div>
+                </div>
+                <div class="col align-items-center d-flex justify-content-center justify-content-lg-center ml-5">
+                    <img src="img/favicon.ico2" alt="Vic Manuel Ortiz Logo">
+                </div>
+                <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
+                    <div class="row">
+                        <div class="col social"><a target="_blank" href="https://github.com/vicmo616/"><i
+                                    class="fab fa-github fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a target="_blank" href="https://www.linkedin.com/"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                        <!-- <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-     <!-- Bootstrap JS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
-     </script>
- <script src="js/site.js"></script>
+
+    <template id=ddTemplate>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+        </script>
+    <script src="js/site.js"></script>
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
 </body>
 
 </html>

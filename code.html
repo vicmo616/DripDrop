@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Vic Manuel Ortiz</title>
+    <title>DRIP DROP: A Coding Project By Vic Manuel Ortiz</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +15,16 @@
 
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/prism.css">
+    <link rel="icon" href="img/favicon.ico">
+
 </head>
 
 <body class="d-flex flex-column h-100">
     <!-- nav section -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="img/Vic manuel (gray).png" width="36" height="36"
+                    class="d-inline-block align-text-top"> DRIP DROP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,11 +41,11 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/vicmo616/DripDrop">Git Repo</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -50,44 +53,215 @@
     <!-- main section -->
     <main class="flex-shrink-0">
         <div class="container px-5 py-5 mt-5">
-            <h2 class="border-1 border-bottom bottom-dark">The Code for APP NAME</h2>
+            <h2 class="border-1 border-bottom bottom-dark">The Code for DRIP DROP</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //call hello world
-                            function HelloWorld() {
-                                alert("hello world");
-                            } 
+                            //get values from the user, the drip and drop values
+                            function getValues() {
+                                let dripValue = document.getElementById("dripValue").value;
+                                let dropValue = document.getElementById("dropValue").value;
+                            
+                                //parse for numbers
+                                dripValue = parseInt(dripValue);
+                                dropValue = parseInt(dropValue);
+                            
+                                //check for integers
+                                if (Number.isInteger(dripValue) && Number.isInteger(dropValue)) {
+                            
+                                    //we call dripDrop
+                                    let ddArray = dripDrop(dripValue, dropValue);
+                            
+                                    //we call displayData and write values to the screen
+                                    displayData(ddArray);
+                            
+                                } else {
+                                    alert("You Must Enter Integers");
+                                }
+                            
+                            
+                            }
+                            
+                            //do dripDrop
+                            function dripDrop(dripValue, dropValue) {
+                                let returnArray = [];
+                            
+                                //loop from 1 to 100
+                                for (let i = 1; i <= 100; i++) {
+                            
+                                    //check to see if divisible by both (3 and 5)
+                                    if (i % dripValue == 0 && i % dropValue == 0) {
+                                        returnArray.push("DripDrop");
+                            
+                                    }
+                                    //check to see if divisible by drip value(3)
+                                    else if (i % dripValue == 0) {
+                                        returnArray.push("Drip");
+                            
+                                    }
+                                    //check to see if divisible by drop value (5)
+                                    else if (i % dropValue == 0) {
+                                        returnArray.push("Drop");
+                                    }
+                            
+                                    else {
+                                        returnArray.push(i)
+                                    }
+                            
+                            
+                                }
+                            
+                               return returnArray;
+                            }
+                            
+                            //loop over the array and create a tablerow for each
+                            
+                            function displayData(ddArray) {
+                            
+                                //get the table body element from page
+                                let tableBody = document.getElementById("results");
+                            
+                                //get the template
+                                let templateRow = document.getElementById("ddTemplate");
+                            
+                                //clear the table first
+                                tableBody.innerHTML = "";
+                            
+                                for (let index = 0; index < ddArray.length; index += 5) {
+                                    let tableRow = document.importNode(templateRow.content, true);
+                                    
+                                    //grab the td's put into array
+                            
+                                    let rowCols = tableRow.querySelectorAll("td");
+                            
+                                    rowCols[0].classList.add(ddArray[index]);
+                                    rowCols[0].textContent = ddArray[index];
+                            
+                                    rowCols[1].classList.add(ddArray[index+1]);
+                                    rowCols[1].textContent = ddArray[index+1];
+                            
+                                    rowCols[2].classList.add(ddArray[index+2]);
+                                    rowCols[2].textContent = ddArray[index+2];
+                            
+                                    rowCols[3].classList.add(ddArray[index+3]);
+                                    rowCols[3].textContent = ddArray[index+3];
+                            
+                                    rowCols[4].classList.add(ddArray[index+4]);
+                                    rowCols[4].textContent = ddArray[index+4];
+                            
+                                    tableBody.appendChild(tableRow);
+                                } 
+                            
+                                //add all the rows to the table
+                            }
+                            
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello world</h5>
-                    <p>Hello world is a function that displays an alert with a message of hello world.</p>
+                    <p>The Code is structured in three functions.</p>
+                    <h5>getValues</h5>
+                    <p><strong>getValues</strong> is used to get the values that are inputted from the page by the user
+                        by use of <strong>getElementById</strong>.
+                        Once that is accomplished we will check to make sure the inputted content is in fact integers by
+                        use of parsing the users values with the <strong>parseInt</strong> function, followed by using
+                        an if else statement to verify this as well using the <strong>Number.isInteger</strong> method
+                        which will alert the user that an integer is required if an integer was not used.
+                        Once both of the users values are true integers we will call our logic function
+                        <strong>dripDrop</strong> and get its's data back, as well as call our
+                        <strong>displayData</strong> function.
+                        Lastly we are to assign our <strong>dripDrop</strong> function to a variable
+                        <strong>ddArray</strong> where dripDrop accepts two parameters being the dripValue and
+                        dropValue.
+                    </p>
+                    <h5>dripDrop</h5>
+                    <p>This logic function is used to return an array <strong>returnArray</strong> which is assigned a
+                        blank array. Next we need to loop from 1 to 100 via a for loop, within the for loop we assign
+                        the variable i a value of 1 and incrementing up as long as it is less than or equal to 100.
+                        Next we need to check on each number that is being looped through to see if they are divisible
+                        by the inputted values from the user. In order to do this we initiate an if else statemnet, the
+                        first to check is for both values being divisible by the upcoming number in the loop to print
+                        "DripDrop" to maintain the logic of this function before checking the individual values.
+                        In the first statement our variable i is checked if its divisible by the value with the modulus
+                        operator and seeing if its equal to 0 as well as the users second value, grouping the two
+                        statements together using the logical && operator, if the numbers are divisible by both values
+                        we then proceed to return our array while pushing a values of "DripDrop" to appear in place of
+                        the expected number in the loop using the push method <strong>returnArray.push</strong>, which
+                        appends values to an array. Now we are checking for only one of the users values being the first
+                        one within the else if statement, if it is divisible with the upcoming number and pushing "Drip"
+                        to
+                        appear this time using the push method. Using another else if, we are checking the users second
+                        value's divisibility status returning "Drop" instead into the push value with the array.
+                        Lastly with our final else statement, if neither value is divisible with the shown number in the
+                        loop the value of the number in the variable i is then displayed as a result instead.
+                    </p>
+                    <h5>displayData</h5>
+                    <p>
+                        The <strong>displayData</strong> function accepts the variable <strong>ddArray</strong>'s data
+                        as a parameter to display
+                        it to the page. <strong>ddArray</strong> consists of the function <strong>dripDrop</strong>'s
+                        values which we assigned to it earlier. We begin with the introduction of the
+                        <strong>template</strong> tag, we input this into the code of our app and what this does is it
+                        accepts valid HTML but does not display it. So we embody it with 5 "td" tags and assign it an id
+                        of <strong>ddTemplate</strong> for later reference in our JS code. Next we will grab our table
+                        body element from the page. To do this we use again <strong>getElementById</strong> to get the
+                        id "results" and assign it to the variable <strong>tableBody</strong>. Then we
+                        <strong>getElementById</strong> to get <strong>ddTemplate</strong> and assign it to
+                        <strong>templateRow</strong> so we can be able to display our template into our table body.
+                        The next step is to make sure our table body is clear so we don't attach an excess of data into
+                        it that we don't necessarily need. In order to this we take <strong>tableBody.innerHTML</strong>
+                        and set it's value to an empty string. Now since we have an array that is coming in, we need to
+                        loop over it and display it, we will be operating on the index, so we will run a for loop and
+                        use the length of our ddArray to loop through.
+                        We will now declare a new variable called <strong>tableRow</strong> and assign it with the
+                        method <strong>document.importNode</strong>. What this will do is take the children of our
+                        template tag and fragment it, take it and copy it and direct it towards our table body.
+                        To make this happen, the <strong>templateRow</strong> variable, which is equalled to what
+                        <strong>ddTemplate</strong> represents is inputted into the <strong>.importNode</strong> method
+                        and grabs only its content by use of the <strong>.content</strong> suffix being added to it
+                        along with "true" as another parameter so it can grab all of what's associated to it.
+                        Next we will now establish how many columns will be in it, determining ultimately how wide we
+                        want it to appear. So we will use another selector to count the "td" we have, essentially
+                        grabbing them and inserting them into an array and checking its length. The
+                        <strong>rowCols</strong> variable is made to equal our fragment <strong>tableRow</strong> and
+                        use the document method <strong>querySelectorAll</strong> inserting "td". This instructs our
+                        function to take in any and all values that amount to the inserted tag in this instance, and
+                        indexing them into an array. The way we do this is is by taking our <strong>rowCols</strong>
+                        current index and making its textContent equal to our <strong>ddArray</strong>'s index that we
+                        reference and increase it by use of incrementing it. Before we do this, instead of incrementing
+                        by
+                        just one in this for loop, we change it to go by 5 to make use of the width we are trying to
+                        achieve for our table body. Our final statement will be on each time that we append data into
+                        our <strong>tableRow</strong> we will want to add it to the page, using the document method
+                        <strong>appendChild</strong> inserting then <strong>tableRow</strong> into its parameter to
+                        display its data.
+
+                    </p>
                 </div>
             </div>
         </div>
     </main>
     <!-- footer section -->
-    <footer class="footer mt-auto py-3">
+    <footer class="footer mt-auto py-3 bg-secondary">
         <div class="container-fluid ">
             <div class="row row-cols-1 row-cols-lg-3 gy-2">
                 <div class="col  order-last order-lg-first text-light">
-                    <div><span class="text-muted">&copy;2021</span> Vic Manuel Ortiz | vicmo616@gmail.com</div>
+                    <div> &copy;2021 Vic Manuel Ortiz | vicmo616@gmail.com</div>
                 </div>
-                <div class="col align-items-center justify-content-start justify-content-lg-center">
-                    <!-- <img src="" alt="Vic Manuel Ortiz Logo" height="24"> -->
+                <div class="col align-items-center d-flex justify-content-center justify-content-lg-center ml-5">
+                    <img src="img/favicon.ico2" alt="Vic Manuel Ortiz Logo">
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://github.com/vicmo616/"><i
+                                    class="fab fa-github fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a target="_blank" href="https://www.linkedin.com/"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
-                        </div>
+                        <!-- <div class="col social"><a target="_blank" href="#"><i class="fab fa-github fa-2x"></i></a>
+                        </div> -->
                     </div>
                 </div>
             </div>
